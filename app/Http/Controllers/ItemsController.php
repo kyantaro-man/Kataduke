@@ -15,7 +15,7 @@ class ItemsController extends Controller
 
         $current_room = Room::find($id);
 
-        $items = Item::where('room_id', $current_room->id)->get();
+        $items = $current_room->items()->get();
 
         return view('items/index', [
             'rooms' => $rooms,

@@ -46,4 +46,11 @@ class Room extends Model
 
         return self::STATUS[$status]['class'];
     }
+
+    /**
+     * アイテムとのリレーション
+     */
+    public function items() {
+        return $this->hasMany('App\Models\Item');
+    }
 }

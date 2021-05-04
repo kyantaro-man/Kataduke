@@ -24,8 +24,15 @@ class CreateRoom extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:20',
             'size' => 'required',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'name' => 'ルーム名',
+            'size' => 'サイズ',
         ];
     }
 }

@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('rooms/{id}/items', 'ItemsController@index')->name('items.index');
+Route::get('rooms/{id}/items', 'App\Http\Controllers\ItemsController@index')->name('items.index');

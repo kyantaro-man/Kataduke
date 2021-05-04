@@ -14,7 +14,7 @@ class ItemsController extends Controller
 
         return view('items/index', [
             'rooms' => $rooms,
-            'current_folder_id' => $id,
+            'current_room_id' => $id,
         ]);
     }
 }

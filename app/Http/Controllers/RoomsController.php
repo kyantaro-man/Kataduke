@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Http\Requests\CreateRoom;
 
 class RoomsController extends Controller
 {
@@ -13,7 +14,7 @@ class RoomsController extends Controller
     }
 
     // ルームを登録する
-    public function create(Request $request) {
+    public function create(CreateRoom $request) {
         $room = new Room();
 
         $room->name = $request->name;

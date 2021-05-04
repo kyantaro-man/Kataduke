@@ -13,4 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('rooms/{id}/items', 'App\Http\Controllers\ItemsController@index')->name('items.index');
+Route::get('/rooms/{id}/items', 'App\Http\Controllers\ItemsController@index')->name('items.index');
+
+Route::get('/rooms/create', 'App\Http\Controllers\RoomsController@showCreateForm')->name('rooms.create');
+Route::post('/rooms/create', 'App\Http\Controllers\RoomsController@create');

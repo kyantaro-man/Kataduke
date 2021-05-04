@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col col-md-offset-3 col-md-6">
           <nav class="panel panel-warning">
-            <div class="panel-heading">フォルダを追加する</div>
+            <div class="panel-heading">ルームを登録する</div>
             <div class="panel-body">
               @if($errors->any())
                 <div class="alert alert-danger">
@@ -33,14 +33,14 @@
                 @csrf
                 <div class="form-group">
                   <label for="name">ルーム名</label>
-                  <input type="text" class="form-control" name="name" id="name" />
+                  <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" />
                 </div>
                 <div class="form-group">
                   <label for="title">サイズ</label>
-                  <input type="text" class="form-control" name="size" id="size" />
+                  <input type="text" class="form-control" name="size" id="size" value="{{ old('size') }}" />
                 </div>
                 <div class="text-right">
-                  <button type="submit" class="btn btn-primary">送信</button>
+                  <button type="submit" class="btn btn-primary">登録</button>
                 </div>
               </form>
             </div>

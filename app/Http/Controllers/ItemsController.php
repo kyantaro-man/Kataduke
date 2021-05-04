@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\Item;
 
 class ItemsController extends Controller
 {
@@ -12,9 +13,14 @@ class ItemsController extends Controller
     {
         $rooms = Room::all();
 
+        $current_room = Room::find($id);
+
+        $items = Item::where('room_id', $current_room->id)->get();
+
         return view('items/index', [
             'rooms' => $rooms,
-            'current_room_id' => $id,
+            'current_room_id' => $current_room->id,
+            'items' => $items,
         ]);
     }
 }

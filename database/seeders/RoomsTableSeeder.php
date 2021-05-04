@@ -23,7 +23,7 @@ class RoomsTableSeeder extends Seeder
             DB::table('rooms')->insert([
                 'name' => $names[$i],
                 'size' => $sizes[$i],
-                'status' => $i,
+                'status' => $i+1,
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

@@ -27,7 +27,7 @@
                 <input type="text" class="form-control" name="size" id="size" value="{{ old('size') ?? $room->size }}" />
               </div>
               <div class="text-right">
-                <button type="submit" class="btn btn-primary">登録</button>
+                <button type="submit" class="btn btn-primary">更新</button>
               </div>
             </form>
           </div>

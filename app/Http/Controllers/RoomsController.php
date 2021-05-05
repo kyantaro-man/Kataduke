@@ -26,4 +26,14 @@ class RoomsController extends Controller
             'id' => $room->id,
         ]);
     }
+
+    // ルームの編集フォームを表示する
+    public function showEditForm(int $id) {
+
+        $room = Room::find($id);
+
+        return view('rooms/edit', [
+            'room' => $room,
+        ]);
+    }
 }

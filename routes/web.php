@@ -21,5 +21,5 @@ Route::post('/rooms/create', 'App\Http\Controllers\RoomsController@create');
 Route::get('/rooms/{id}/items/create', 'App\Http\Controllers\ItemsController@showCreateForm')->name('items.create');
 Route::post('/rooms/{id}/items/create', 'App\Http\Controllers\ItemsController@create');
 
-Route::get('/rooms/{id}/edit', 'App\Http\Controllers\RoomsController@showEditForm')->name('items.edit');
+Route::get('/rooms/{id}/edit', 'App\Http\Controllers\RoomsController@showEditForm')->name('rooms.edit');
 Route::post('/rooms/{id}/edit', 'App\Http\Controllers\RoomsController@edit');

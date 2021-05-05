@@ -16,13 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function() {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-  Route::get('/rooms/{room}/items', 'App\Http\Controllers\ItemsController@index')->name('items.index');
+  Route::group(['middleware' => 'can:view,room'], function() {
+    Route::get('/rooms/{room}/items', 'App\Http\Controllers\ItemsController@index')->name('items.index');
 
-  Route::get('/rooms/{room}/items/create', 'App\Http\Controllers\ItemsController@showCreateForm')->name('items.create');
-  Route::post('/rooms/{room}/items/create', 'App\Http\Controllers\ItemsController@create');
+    Route::get('/rooms/{room}/items/create', 'App\Http\Controllers\ItemsController@showCreateForm')->name('items.create');
+    Route::post('/rooms/{room}/items/create', 'App\Http\Controllers\ItemsController@create');
 
-  Route::get('/rooms/{room}/items/{item}/edit', 'App\Http\Controllers\ItemsController@showEditForm')->name('items.edit');
-  Route::post('/rooms/{room}/items/{item}/edit', 'App\Http\Controllers\ItemsController@edit');
+    Route::get('/rooms/{room}/items/{item}/edit', 'App\Http\Controllers\ItemsController@showEditForm')->name('items.edit');
+    Route::post('/rooms/{room}/items/{item}/edit', 'App\Http\Controllers\ItemsController@edit');
+  });
 
   Route::get('/rooms/create', 'App\Http\Controllers\RoomsController@showCreateForm')->name('rooms.create');
   Route::post('/rooms/create', 'App\Http\Controllers\RoomsController@create');

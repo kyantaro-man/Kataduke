@@ -43,12 +43,14 @@ class ItemsController extends Controller
         $room->items()->save($item);
 
         return redirect()->route('items.index', [
-            'id' => $room->id,
+            'room' => $room,
         ]);
     }
 
     // アイテム編集ページを表示する
     public function showEditForm(Room $room, Item $item) {
+        $this->checkRelation($room, $item);
+
         return view('items/edit', [
             'item' => $item,
         ]);
@@ -56,6 +58,8 @@ class ItemsController extends Controller
 
     // アイテムを編集する
     public function edit(Room $room, Item $item, EditItem $request) {
+        $this->checkRelation($room, $item);
+        
         $item->name = $request->name;
         $item->size = $request->size;
         $item->image = $request->image;
@@ -64,7 +68,13 @@ class ItemsController extends Controller
         $item->save();
 
         return redirect()->route('items.index', [
-            'id' => $item->room_id,
+            'room' => $item->room_id,
         ]);
+    }
+
+    private function checkRelation(Room $room, Item $item) {
+        if ($room->id !== $item->room_id) {
+            abort(404);
+        }
     }
 }

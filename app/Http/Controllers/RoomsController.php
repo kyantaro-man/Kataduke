@@ -30,9 +30,7 @@ class RoomsController extends Controller
     }
 
     // ルームの編集フォームを表示する
-    public function showEditForm(int $id) {
-
-        $room = Room::find($id);
+    public function showEditForm(Room $room) {
 
         return view('rooms/edit', [
             'room' => $room,
@@ -40,17 +38,14 @@ class RoomsController extends Controller
     }
 
     // ルームの編集をする
-    public function edit(int $id, EditRoom $request) {
-        
-        $room = Room::find($id);
-
+    public function edit(Room $room, EditRoom $request) {
         $room->name = $request->name;
         $room->size = $request->size;
 
         $room->save();
 
         return redirect()->route('items.index', [
-            'id' => $room->id,
+            'room' => $room,
         ]);
     }
 }

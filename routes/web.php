@@ -26,6 +26,7 @@ Route::post('/rooms/{id}/edit', 'App\Http\Controllers\RoomsController@edit');
 
 Route::get('/rooms/{id}/items/{item_id}/edit', 'App\Http\Controllers\ItemsController@showEditForm')->name('items.edit');
 Route::post('/rooms/{id}/items/{item_id}/edit', 'App\Http\Controllers\ItemsController@edit');
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

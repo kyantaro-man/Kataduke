@@ -14,6 +14,13 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * パスワード再設定メールを送信する
+     */
+    public function sendPasswordResetNotification($token) {
+        Mail::to($this)->send(new ResetPassword($token));
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -45,12 +52,5 @@ class User extends Authenticatable
 
     public function rooms() {
         return $this->hasMany('App\Models\Room');
-    }
-
-    /**
-     * パスワード再設定メールを送信する
-     */
-    public function sendPasswordResetNotification($token) {
-        Mail::to($this)->send(new ResetPassword($token));
     }
 }

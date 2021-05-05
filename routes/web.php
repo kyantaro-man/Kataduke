@@ -23,3 +23,6 @@ Route::post('/rooms/{id}/items/create', 'App\Http\Controllers\ItemsController@cr
 
 Route::get('/rooms/{id}/edit', 'App\Http\Controllers\RoomsController@showEditForm')->name('rooms.edit');
 Route::post('/rooms/{id}/edit', 'App\Http\Controllers\RoomsController@edit');
+
+Route::get('/rooms/{id}/items/{item_id}/edit', 'App\Http\Controllers\ItemsController@showEditForm')->name('items.edit');
+Route::post('/rooms/{id}/items/{item_id}/edit', 'App\Http\Controllers\ItemsController@edit');

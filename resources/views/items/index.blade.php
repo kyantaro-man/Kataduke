@@ -59,7 +59,7 @@
                 <tr>
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->size }}</td>
-                  <td><a href="#">編集</a></td>
+                  <td><a href="{{ route('items.edit', ['id' => $item->room_id, 'item_id' => $item->id]) }}">編集</a></td>
                   <td><a href="#">削除</a></td>
                 </tr>
               @endforeach

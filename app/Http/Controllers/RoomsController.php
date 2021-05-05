@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Http\Requests\CreateRoom;
 use App\Http\Requests\EditRoom;
+use Illuminate\Support\Facades\Auth;
 
 class RoomsController extends Controller
 {
@@ -21,7 +22,7 @@ class RoomsController extends Controller
         $room->name = $request->name;
         $room->size = $request->size;
 
-        $room->save();
+        Auth::user()->rooms()->save($room);
 
         return redirect()->route('items.index', [
             'id' => $room->id,

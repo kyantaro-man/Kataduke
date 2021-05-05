@@ -24,7 +24,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => $names[$i],
                 'size' => $sizes[$i],
                 'memo' => 'これはアイテム' . ($i+1) . 'です！',
-                'room_id' => 2,
+                'room_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);

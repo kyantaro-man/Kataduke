@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+
+        $room = $user->rooms()->first();
+
+        if (is_null($room)) {
+            return view('home');
+        }
+        
+        return redirect()->route('items.index', [
+            'id' => $room->id,
+        ]);
     }
 }

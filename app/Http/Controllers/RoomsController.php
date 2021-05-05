@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Http\Requests\CreateRoom;
+use App\Http\Requests\EditRoom;
 
 class RoomsController extends Controller
 {
@@ -16,6 +17,31 @@ class RoomsController extends Controller
     // ルームを登録する
     public function create(CreateRoom $request) {
         $room = new Room();
+
+        $room->name = $request->name;
+        $room->size = $request->size;
+
+        $room->save();
+
+        return redirect()->route('items.index', [
+            'id' => $room->id,
+        ]);
+    }
+
+    // ルームの編集フォームを表示する
+    public function showEditForm(int $id) {
+
+        $room = Room::find($id);
+
+        return view('rooms/edit', [
+            'room' => $room,
+        ]);
+    }
+
+    // ルームの編集をする
+    public function edit(int $id, EditRoom $request) {
+        
+        $room = Room::find($id);
 
         $room->name = $request->name;
         $room->size = $request->size;

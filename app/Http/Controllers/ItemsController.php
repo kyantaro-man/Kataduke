@@ -23,4 +23,13 @@ class ItemsController extends Controller
             'items' => $items,
         ]);
     }
+
+    // アイテム追加ページを表示する
+    public function showCreateForm(int $id) {
+        return view('items/create', [
+            'item_id' => $id,
+        ]);
+    }
+
+
 }

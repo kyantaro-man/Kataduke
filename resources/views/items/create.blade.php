@@ -16,7 +16,7 @@
                 </ul>
               </div>
             @endif
-            <form action="{{ route('rooms.create') }}" method="post">
+            <form action="{{ route('items.create', ['id' => $room_id]) }}" method="post">
               @csrf
               <div class="form-group">
                 <label for="name">アイテム名</label>
@@ -32,7 +32,7 @@
               </div>
               <div class="form-group">
                 <label for="memo">メモ</label>
-                <textarea class="form-control" name="memo" id="memo" value="{{ old('memo') }}" ></textarea>
+                <textarea class="form-control" name="memo" id="memo">{{ old('memo') }}</textarea>
               </div>
               <div class="text-right">
                 <button type="submit" class="btn btn-primary">追加</button>

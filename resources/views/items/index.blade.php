@@ -41,7 +41,7 @@
         <div class="panel panel-warning">
           <div class="panel-heading">アイテム</div>
           <div class="panel-body">
-            <a href="#" class="btn btn-default btn-block">
+            <a href="{{ route('items.create', ['id' => $current_room_id]) }}" class="btn btn-default btn-block">
               アイテムを追加する
             </a>
           </div>

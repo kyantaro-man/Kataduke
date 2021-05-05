@@ -17,3 +17,6 @@ Route::get('/rooms/{id}/items', 'App\Http\Controllers\ItemsController@index')->n
 
 Route::get('/rooms/create', 'App\Http\Controllers\RoomsController@showCreateForm')->name('rooms.create');
 Route::post('/rooms/create', 'App\Http\Controllers\RoomsController@create');
+
+Route::get('/rooms/{id}/items/create', 'App\Http\Controllers\ItemsController@showCreateForm')->name('items.create');
+Route::post('/rooms/{id}/items/create', 'App\Http\Controllers\ItemsController@create');

@@ -48,8 +48,6 @@ a.my-navbar-item:hover {
   background-color: #ddae87;
 }
 
-
-
 .form-control[disabled],
 .form-control[readonly] {
   background-color: #fff;

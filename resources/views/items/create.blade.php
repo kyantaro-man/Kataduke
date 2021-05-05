@@ -16,7 +16,7 @@
                 </ul>
               </div>
             @endif
-            <form action="{{ route('items.create', ['id' => $room_id]) }}" method="post">
+            <form action="{{ route('items.create', ['room' => $room_id]) }}" method="post">
               @csrf
               <div class="form-group">
                 <label for="name">アイテム名</label>

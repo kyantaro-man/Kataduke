@@ -24,12 +24,12 @@
             <tbody>
               @foreach($rooms as $room)
                 <tr class="table-room {{ $current_room_id === $room->id ? 'act' : '' }}">
-                  <td><a href="{{ route('items.index', ['id' => $room->id]) }}">{{ $room->name }}</a></td>
+                  <td><a href="{{ route('items.index', ['room' => $room->id]) }}">{{ $room->name }}</a></td>
                   <td>{{ $room->size }}</td>
                   <td>
                     <span class="label {{ $room->status_class }}">{{ $room->status_label }}</span>
                   </td>
-                  <td><a href="{{ route('rooms.edit', ['id' => $room->id]) }}">編集</a></td>
+                  <td><a href="{{ route('rooms.edit', ['room' => $room->id]) }}">編集</a></td>
                   <td><a href="#">削除</a></td>
                 </tr>
               @endforeach
@@ -41,7 +41,7 @@
         <div class="panel panel-warning">
           <div class="panel-heading">アイテム</div>
           <div class="panel-body">
-            <a href="{{ route('items.create', ['id' => $current_room_id]) }}" class="btn btn-default btn-block">
+            <a href="{{ route('items.create', ['room' => $current_room_id]) }}" class="btn btn-default btn-block">
               アイテムを追加する
             </a>
           </div>
@@ -59,7 +59,7 @@
                 <tr>
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->size }}</td>
-                  <td><a href="{{ route('items.edit', ['id' => $item->room_id, 'item_id' => $item->id]) }}">編集</a></td>
+                  <td><a href="{{ route('items.edit', ['room' => $item->room_id, 'item' => $item->id]) }}">編集</a></td>
                   <td><a href="#">削除</a></td>
                 </tr>
               @endforeach

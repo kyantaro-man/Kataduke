@@ -33,7 +33,7 @@ class HomeController extends Controller
         }
         
         return redirect()->route('items.index', [
-            'id' => $room->id,
+            'room' => $room->id,
         ]);
     }
 }

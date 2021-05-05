@@ -16,7 +16,7 @@
                 </ul>
               </div>
             @endif
-            <form action="{{ route('items.edit', ['id' => $item->room_id, 'item_id' => $item->id]) }}" method="post">
+            <form action="{{ route('items.edit', ['room' => $item->room_id, 'item' => $item->id]) }}" method="post">
               @csrf
               <div class="form-group">
                 <label for="name">アイテム名</label>

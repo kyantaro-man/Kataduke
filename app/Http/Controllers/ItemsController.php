@@ -12,58 +12,50 @@ use Illuminate\Support\Facades\Auth;
 class ItemsController extends Controller
 {
     // アイテム一覧を表示する
-    public function index(int $id)
+    public function index(Room $room)
     {
         $rooms = Auth::user()->rooms()->get();
 
-        $current_room = Room::find($id);
-
-        $items = $current_room->items()->get();
+        $items = $room->items()->get();
 
         return view('items/index', [
             'rooms' => $rooms,
-            'current_room_id' => $current_room->id,
+            'current_room_id' => $room->id,
             'items' => $items,
         ]);
     }
 
     // アイテム追加ページを表示する
-    public function showCreateForm(int $id) {
+    public function showCreateForm(Room $room) {
         return view('items/create', [
-            'room_id' => $id,
+            'room_id' => $room->id,
         ]);
     }
 
     // アイテムを追加する
-    public function create(int $id, CreateItem $request) {
-        $current_room = Room::find($id);
-
+    public function create(Room $room, CreateItem $request) {
         $item = new Item();
         $item->name = $request->name;
         $item->size = $request->size;
         $item->image = $request->image;
         $item->memo = $request->memo;
 
-        $current_room->items()->save($item);
+        $room->items()->save($item);
 
         return redirect()->route('items.index', [
-            'id' => $current_room->id,
+            'id' => $room->id,
         ]);
     }
 
     // アイテム編集ページを表示する
-    public function showEditForm(int $id, int $item_id) {
-        $item = Item::find($item_id);
-
+    public function showEditForm(Room $room, Item $item) {
         return view('items/edit', [
             'item' => $item,
         ]);
     }
 
     // アイテムを編集する
-    public function edit(int $id, int $item_id, EditItem $request) {
-        $item = Item::find($item_id);
-
+    public function edit(Room $room, Item $item, EditItem $request) {
         $item->name = $request->name;
         $item->size = $request->size;
         $item->image = $request->image;

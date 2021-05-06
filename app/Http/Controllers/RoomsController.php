@@ -48,4 +48,16 @@ class RoomsController extends Controller
             'room' => $room,
         ]);
     }
+
+    // ルームの削除をする
+    public function destroy(Room $room) {
+        $room->items()->each(function ($item) {
+            $item->delete();
+        });
+        $room->delete();
+
+        return redirect()->route('items.index', [
+            'room' => Auth::user()->rooms()->first(),
+        ])->with('success', '削除完了');
+    }
 }

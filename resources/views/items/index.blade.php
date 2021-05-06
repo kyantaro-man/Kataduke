@@ -30,7 +30,12 @@
                     <span class="label {{ $room->status_class }}">{{ $room->status_label }}</span>
                   </td>
                   <td><a href="{{ route('rooms.edit', ['room' => $room->id]) }}">編集</a></td>
-                  <td><a href="#">削除</a></td>
+                  <td>
+                    <form action="{{ route('rooms.destroy', ['room' => $room->id]) }}" method="POST">
+                      @csrf
+                      <input type='submit' value='削除' class='btn btn-danger btn-xs'>
+                    </form>
+                  </td>
                 </tr>
               @endforeach
             </tbody>

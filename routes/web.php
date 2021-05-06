@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function() {
 
   Route::get('/rooms/{room}/edit', 'App\Http\Controllers\RoomsController@showEditForm')->name('rooms.edit');
   Route::post('/rooms/{room}/edit', 'App\Http\Controllers\RoomsController@edit');
+
+  Route::post('/rooms/{room}/destroy', 'App\Http\Controllers\RoomsController@destroy')->name('rooms.destroy');
 });
 
 Auth::routes();

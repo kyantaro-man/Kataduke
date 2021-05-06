@@ -72,6 +72,15 @@ class ItemsController extends Controller
         ]);
     }
 
+    // アイテムの削除をする
+    public function destroy(Room $room, Item $item) {
+        $item->delete();
+
+        return redirect()->route('items.index', [
+            'room' => $room->id,
+        ])->with('success', '削除完了');
+    }
+
     private function checkRelation(Room $room, Item $item) {
         if ($room->id !== $item->room_id) {
             abort(404);

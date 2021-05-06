@@ -24,6 +24,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/rooms/{room}/items/{item}/edit', 'App\Http\Controllers\ItemsController@showEditForm')->name('items.edit');
     Route::post('/rooms/{room}/items/{item}/edit', 'App\Http\Controllers\ItemsController@edit');
+
+    Route::post('/rooms/{room}/items/{item}/destroy', 'App\Http\Controllers\ItemsController@destroy')->name('items.destroy');
   });
 
   Route::get('/rooms/create', 'App\Http\Controllers\RoomsController@showCreateForm')->name('rooms.create');
@@ -31,6 +33,8 @@ Route::group(['middleware' => 'auth'], function() {
 
   Route::get('/rooms/{room}/edit', 'App\Http\Controllers\RoomsController@showEditForm')->name('rooms.edit');
   Route::post('/rooms/{room}/edit', 'App\Http\Controllers\RoomsController@edit');
+
+  Route::post('/rooms/{room}/destroy', 'App\Http\Controllers\RoomsController@destroy')->name('rooms.destroy');
 });
 
 Auth::routes();

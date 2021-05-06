@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col col-md-offset-3 col-md-6">
-        <nav class="panel panel-default">
+        <nav class="panel panel-warning">
           <div class="panel-heading">会員登録</div>
           <div class="panel-body">
             @if($errors->any())

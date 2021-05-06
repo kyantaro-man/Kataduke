@@ -25,7 +25,7 @@ class RoomsController extends Controller
         Auth::user()->rooms()->save($room);
 
         return redirect()->route('items.index', [
-            'id' => $room->id,
+            'room' => $room->id,
         ]);
     }
 

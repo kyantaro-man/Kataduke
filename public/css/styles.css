@@ -33,7 +33,7 @@ a.my-navbar-item:hover {
   color: #fff;
 }
 
-.table td a {
+.table tr td:first-child a {
   color: #333;
   font-weight: bold;
 }

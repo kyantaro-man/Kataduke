@@ -34,7 +34,7 @@
                   <td>
                     <span class="label {{ $room->status_class }}">{{ $room->status_label }}</span>
                   </td>
-                  <td><a href="{{ route('rooms.edit', ['room' => $room->id]) }}">編集</a></td>
+                  <td><a class='btn btn-primary btn-xs' href="{{ route('rooms.edit', ['room' => $room->id]) }}">編集</a></td>
                   <td>
                     <form action="{{ route('rooms.destroy', ['room' => $room->id]) }}" method="POST">
                       @csrf
@@ -74,7 +74,7 @@
                 <tr>
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->size }}</td>
-                  <td><a href="{{ route('items.edit', ['room' => $item->room_id, 'item' => $item->id]) }}">編集</a></td>
+                  <td><a class='btn btn-primary btn-xs' href="{{ route('items.edit', ['room' => $item->room_id, 'item' => $item->id]) }}">編集</a></td>
                   <td>
                     <form action="{{ route('items.destroy', ['room' => $room->id, 'item' => $item->id]) }}" method="POST">
                       @csrf

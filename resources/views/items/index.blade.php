@@ -34,7 +34,7 @@
                   <td>
                     <span class="label {{ $room->status_class }}">{{ $room->status_label }}</span>
                   </td>
-                  <td><a href="{{ route('rooms.edit', ['room' => $room->id]) }}">編集</a></td>
+                  <td><a class='btn btn-primary btn-xs' href="{{ route('rooms.edit', ['room' => $room->id]) }}">編集</a></td>
                   <td>
                     <form action="{{ route('rooms.destroy', ['room' => $room->id]) }}" method="POST">
                       @csrf
@@ -57,19 +57,24 @@
           </div>
           <table class="table">
             <thead>
-            <tr>
-              <th>アイテム名</th>
-              <th>サイズ</th>
-              <th></th>
-              <th></th>
-            </tr>
+              <tr>
+                <th>アイテム名</th>
+                <th>サイズ</th>
+                <th></th>
+                <th></th>
+              </tr>
             </thead>
             <tbody>
+              @if(count($items) === 0)
+                <tr>
+                  <td colspan="4" class="text-danger text-center font-weight-bol">上のボタンを押して、アイテムを追加しよう！</td>
+                </tr>
+              @endif
               @foreach($items as $item)
                 <tr>
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->size }}</td>
-                  <td><a href="{{ route('items.edit', ['room' => $item->room_id, 'item' => $item->id]) }}">編集</a></td>
+                  <td><a class='btn btn-primary btn-xs' href="{{ route('items.edit', ['room' => $item->room_id, 'item' => $item->id]) }}">編集</a></td>
                   <td>
                     <form action="{{ route('items.destroy', ['room' => $room->id, 'item' => $item->id]) }}" method="POST">
                       @csrf

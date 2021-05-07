@@ -24,7 +24,7 @@
               </div>
               <div class="form-group">
                 <label for="title">サイズ</label>
-                <input type="text" class="form-control" name="size" id="size" value="{{ old('size') }}" />
+                <input type="text" class="form-control" name="size" id="size" value="{{ old('size') }}" placeholder="数値を入れてください" />
               </div>
               <div class="text-right">
                 <button type="submit" class="btn btn-primary">登録</button>

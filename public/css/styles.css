@@ -33,7 +33,7 @@ a.my-navbar-item:hover {
   color: #fff;
 }
 
-.table td a {
+.table tr td:first-child a {
   color: #333;
   font-weight: bold;
 }
@@ -51,4 +51,8 @@ a.my-navbar-item:hover {
 .form-control[disabled],
 .form-control[readonly] {
   background-color: #fff;
+}
+
+.font-weight-bol {
+  font-weight: bold;
 }

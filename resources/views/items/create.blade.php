@@ -16,6 +16,11 @@
                 </ul>
               </div>
             @endif
+            @if (session('flash_message'))
+              <div class="alert alert-danger">
+                  {{ session('flash_message') }}
+              </div>
+            @endif
             <form action="{{ route('items.create', ['room' => $room_id]) }}" method="post">
               @csrf
               <div class="form-group">

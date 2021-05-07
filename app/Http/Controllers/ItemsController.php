@@ -34,17 +34,31 @@ class ItemsController extends Controller
 
     // アイテムを追加する
     public function create(Room $room, CreateItem $request) {
+        $current_items_size = [];
+        $items = $room->items()->get();
+        foreach ($items as $item) {
+            $current_items_size[] = $item->size;
+        }
+        $current_items_size_sum = array_sum($current_items_size);
+
         $item = new Item();
         $item->name = $request->name;
         $item->size = $request->size;
         $item->image = $request->image;
         $item->memo = $request->memo;
 
-        $room->items()->save($item);
+        $items_size_sum = $current_items_size_sum + $item->size;
 
-        return redirect()->route('items.index', [
-            'room' => $room,
-        ]);
+        if ($items_size_sum > $room->size) {
+            return redirect()->route('items.create', [
+                'room' => $room,
+            ])->with('flash_message', 'アイテムの合計サイズがルームのサイズを超えています。');
+        } else {
+            $room->items()->save($item);
+            return redirect()->route('items.index', [
+                'room' => $room,
+            ]);
+        }
     }
 
     // アイテム編集ページを表示する
@@ -59,17 +73,31 @@ class ItemsController extends Controller
     // アイテムを編集する
     public function edit(Room $room, Item $item, EditItem $request) {
         $this->checkRelation($room, $item);
+
+        $current_items_size = [];
+        $items = $room->items()->get();
+        foreach ($items as $item) {
+            $current_items_size[] = $item->size;
+        }
+        $current_items_size_sum = array_sum($current_items_size);
         
         $item->name = $request->name;
         $item->size = $request->size;
         $item->image = $request->image;
         $item->memo = $request->memo;
 
-        $item->save();
+        $items_size_sum = $current_items_size_sum + $item->size;
 
-        return redirect()->route('items.index', [
-            'room' => $item->room_id,
-        ]);
+        if ($items_size_sum > $room->size) {
+            return redirect()->route('items.create', [
+                'room' => $room,
+            ])->with('flash_message', 'アイテムの合計サイズがルームのサイズを超えています。');
+        } else {
+            $item->save();
+            return redirect()->route('items.index', [
+                'room' => $room,
+            ]);
+        }
     }
 
     // アイテムの削除をする

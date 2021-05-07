@@ -52,3 +52,7 @@ a.my-navbar-item:hover {
 .form-control[readonly] {
   background-color: #fff;
 }
+
+.font-weight-bol {
+  font-weight: bold;
+}

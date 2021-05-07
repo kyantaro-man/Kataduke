@@ -57,14 +57,19 @@
           </div>
           <table class="table">
             <thead>
-            <tr>
-              <th>アイテム名</th>
-              <th>サイズ</th>
-              <th></th>
-              <th></th>
-            </tr>
+              <tr>
+                <th>アイテム名</th>
+                <th>サイズ</th>
+                <th></th>
+                <th></th>
+              </tr>
             </thead>
             <tbody>
+              @if(count($items) === 0)
+                <tr>
+                  <td colspan="4" class="text-danger text-center font-weight-bol">上のボタンを押して、アイテムを追加しよう！</td>
+                </tr>
+              @endif
               @foreach($items as $item)
                 <tr>
                   <td>{{ $item->name }}</td>

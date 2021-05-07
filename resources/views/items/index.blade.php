@@ -1,6 +1,11 @@
 @extends('layout')
 
 @section('content')
+  @if (session('flash_message'))
+    <div class="alert alert-danger">
+        {{ session('flash_message') }}
+    </div>
+  @endif
   <div class="container">
     <div class="row">
       <div class="col col-md-7">
